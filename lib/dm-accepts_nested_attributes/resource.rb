@@ -165,7 +165,7 @@ module DataMapper
           end
           destroyables << resource
         else
-          resource.update(attributes.except(*unassignable_keys))
+          resource.reload.update(attributes.except(*unassignable_keys))
         end
       end
 
