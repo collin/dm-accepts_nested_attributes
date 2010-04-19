@@ -177,7 +177,9 @@ module DataMapper
       # @return [TrueClass, FalseClass]
       #   true, if attributes contains a truthy :_delete key
       def has_delete_flag?(attributes)
-        !!attributes[:_delete]
+        # Rails checkboxes come back as "0" for false. This is a truthy value.
+        # !!attributes[:_delete]
+        attributes[:_delete] == "1"
       end
 
       ##
